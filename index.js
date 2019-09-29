@@ -1,12 +1,15 @@
 const { openBrowser, goto, closeBrowser } = require("taiko");
 const { login } = require("./commands");
+const getCredentials = require("./lib/credentials");
 
 const start = async () => {
   try {
+    const { cardNumber, password } = await getCredentials();
+
     await openBrowser({ headless: false });
     await goto("https://bcpzonasegurabeta.viabcp.com/#/iniciar-sesion");
 
-    await login("", "");
+    await login(cardNumber, password);
   } catch (e) {
     console.error(e);
   } finally {

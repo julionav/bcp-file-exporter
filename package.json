@@ -5,6 +5,7 @@
   "author": "Julio Navarro <jnavarro@able.co>",
   "license": "MIT",
   "dependencies": {
+    "prompts": "^2.2.1",
     "svg2img": "^0.6.1",
     "taiko": "^1.0.0",
     "tesseract.js": "^2.0.0-alpha.16"

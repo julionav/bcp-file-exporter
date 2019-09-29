@@ -1,6 +1,6 @@
 const { write, click, $, evaluate, waitFor, button } = require("taiko");
-const { identifyDigits } = require("../utils/image-recognition");
-const svgToImage = require("../utils/svgToImage");
+const { identifyDigits } = require("../lib/image-recognition");
+const svgToImage = require("../lib/svgToImage");
 
 const typeCardNumber = async cardNumber => {
   const inputSelector = $("#cardnumberA");
