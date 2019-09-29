@@ -1,0 +1,7 @@
+{
+  "name": "bcp-file-exporter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Julio Navarro <jnavarro@able.co>",
+  "license": "MIT"
+}
