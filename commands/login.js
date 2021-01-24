@@ -1,4 +1,4 @@
-const { write, click, $, evaluate, waitFor, button } = require("taiko");
+const { write, click, $, evaluate, waitFor, button, text } = require("taiko");
 const { identifyDigits } = require("../lib/image-recognition");
 const svgToImage = require("../lib/svgToImage");
 
@@ -49,12 +49,12 @@ const typePassword = async password => {
   }
 };
 
-const clickIfExists = selector => {
-  if (selector.exists()) return click(selector);
+const clickIfExists = async selector => {
+  if (await selector.exists()) return click(selector);
 };
 
 const maybeCloseOtherSessions = () =>
-  clickIfExists(button("CERRAR OTRAS SESIONES ABIERTAS"));
+  clickIfExists(text("CERRAR OTRAS SESIONES ABIERTAS"));
 
 const waitForCaptcha = (time = 30000) =>
   waitFor(async () => {
@@ -72,8 +72,9 @@ const login = async (cardNumber, password) => {
   await waitForCaptcha();
   await submitLoginForm();
 
-  // Some times another session is open and it must be closed
+  // Sometimes another session is open and it must be closed
   await maybeCloseOtherSessions();
+  await waitFor("MIS CUENTAS", 10000);
 };
 
 module.exports = login;
